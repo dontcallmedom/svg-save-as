@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+<meta charset=utf-8>
+<title>Example of using SVG-save-as library</title>
+</head>
+<body>
+<p>This page has embedded SVG in its HTML markup:</p>
+<svg width="200" height="200">
+  <circle cx="100" cy="100" r="100" fill="red"/>
+</svg>
+<p>By default, that image cannot be saved as an image using the traditional "save as" option in the right-click/long press menu of browsers.</p>
+<p>The same SVG code, with the svg-save-as library enabled, makes this possible:</p>
+<svg class="saveas" width="200" height="200">
+  <circle cx="100" cy="100" r="100" fill="red"/>
+</svg>
+
+<script src="../svg-save-as.js"></script>
+<script>SVGSaveAs(".saveas");</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/0.0.1/prism.min.js"></script>
+</body>
