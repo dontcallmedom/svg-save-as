@@ -5,7 +5,7 @@ When SVG is used in-line in HTML, it is today not possible for users to save the
 * a CSS selector
 * an image format (default to "image/png")
 
-When that function is invoked, it emulates the "save image" feature for all svg elements matching the selector, providing it as an image of the said format. [See it in action](https://dontcallmedom.github.io/save-svg-as/example/index.html).
+When that function is invoked, it emulates the "save image" feature for all svg elements matching the selector, providing it as an image of the said format. [See it in action](https://dontcallmedom.github.io/svg-save-as/example/index.html).
 
 # How does it work?
 For each matched svg element, the library overlays an invisible `<img>` tag. That image source is set to:
