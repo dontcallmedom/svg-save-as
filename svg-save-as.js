@@ -10,6 +10,7 @@ function SVGSaveAs(node, format) {
     div.style.padding = 0;
     div.style.position = "relative";
     node.parentNode.replaceChild(div, node);
+    node.style.position = "relative";
     div.appendChild(node);
     if (!node.getAttribute("xmlns")) {
         node.setAttribute("xmlns", "http://www.w3.org/2000/svg");
@@ -39,7 +40,11 @@ function SVGSaveAs(node, format) {
         }
     });
 
-    img.addEventListener("mouseenter", screenshotUpdater);
-    img.addEventListener("touchstart", screenshotUpdater);
-    div.appendChild(img);
+    div.addEventListener("mouseenter", screenshotUpdater, false);
+    div.addEventListener("touchstart", screenshotUpdater, false);
+    div.addEventListener("contextmenu", function (ev) {
+        node.style.pointerEvents = "none";
+        setTimeout(function() { node.style.pointerEvents = "auto";}, 10);
+    });
+    div.insertBefore(img, node);
 }
