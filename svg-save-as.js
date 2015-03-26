@@ -32,8 +32,15 @@ function SVGSaveAs(node, format) {
 
     node.addEventListener("mouseenter", screenshotUpdater, false);
     node.addEventListener("touchstart", screenshotUpdater, false);
+    parent.addEventListener("mousedown", function (ev) {
+        if (ev.buttons & 2 || ev.button === 2) {
+            parent.replaceChild(img, node);
+        }
+    });
     parent.addEventListener("contextmenu", function (ev) {
-        parent.replaceChild(img, node);
-        setTimeout(function() { parent.replaceChild(node, img);}, 0);
+        try {
+            parent.replaceChild(img, node);
+        } catch (e) {}
+        setTimeout(function() {         parent.replaceChild(node, img); }, 0);
     }, true);
 }
