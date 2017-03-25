@@ -1,12 +1,13 @@
 function SVGSaveAs(node, format) {
+    var xmlserializer = new XMLSerializer();
     function screenshotUpdater() {
-        screenshot.src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(node.outerHTML)));
         img.width = node.width.baseVal.value;
         img.height = node.height.baseVal.value;
         screenshot.width = img.width;
         screenshot.height = img.height;
         canvas.width = img.width;
         canvas.height = img.height;
+        screenshot.src = "data:image/svg+xml," + encodeURIComponent(xmlserializer.serializeToString(node));
     }
 
     format = format || "image/png";
